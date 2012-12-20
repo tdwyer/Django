@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class='grid_24'>
+	<div style='margin: 5px;'>
+		<h1>Send Page By E-mail</h1>
+
+		<form action="/email_page/{{ page_type }}/{{ item_id }}/" method="post">{% csrf_token %}
+			{{ form.non_field_errors }}
+			<div class="fieldWrapper">
+				{{ form.recipients.errors }}
+				<p>
+				{{ form.recipients }}
+				<label for="id_recipients">Email Recipients</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				{{ form.sender.errors }}
+				<p>
+				{{ form.sender }}
+				<label for="id_sender">Your Email</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				{{ form.subject.errors }}
+				<p>
+				{{ form.subject }}
+				<label for="id_subject">Subject</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				{{ form.message.errors }}
+				<p>
+				{{ form.message }}
+				<label for="id_message">Message</label>
+				</p>
+			</div>
+			{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+			{% endfor %}
+			<p><input type="submit" value="Send message" /></p>
+		</form>
+	</div>
+</div>
+{% endblock %}

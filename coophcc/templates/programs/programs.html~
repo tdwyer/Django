@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<div class='grid_5'>
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+		<h5>Additional Links</h5>
+		{% for i in additional_links %}
+			<a href='{{ i.url }}' target='_blank' style='font: 12px/1.5 sans-serif;'><u>{{ i }}</u></a>
+			</br></br>
+		{% endfor %}
+	</div>
+</div>
+</br>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+		<h1>Participating Degree Programs</h1>
+
+		{% for i in program_objects %}
+		<a href='{{ i.url }}' target='_blank' style='font: 12px/1.5 sans-serif;'><h6>{{ i }}</h6></a>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

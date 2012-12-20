@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block sidebar %}
+<div class='grid_5'>
+	<div class='sidebar'>
+		<div style='margin: 5px;'>
+			<h5>Related Pages</h5>
+			<a href='/news/search/' style='font: 12px/1.5 sans-serif;'><u>Search All News</u></a>
+				</br></br>
+				<font color='#007c85'><b>New Items</b></font></br>
+				{% for i in news_objects %}
+				<a href='{{ i.get_absolute_url }}' style='font: 12px/1.5 sans-serif;'><font color='blue'><u>{{ i }}</u></font></a>
+				{% endfor %}
+				</br>
+				</br>
+				<a href='/email_page/news/{{ displayed_object.id }}/' style='font: 12px/1.5 sans-serif;'>
+				<image src='/static/media/image/mail_icon.gif'/>
+				<u> Send to friend</u>
+				</a>
+				</br>
+				<a href='/news/{{ displayed_object.id }}/pdf/' style='font: 12px/1.5 sans-serif;'>
+				<image src='/static/media/image/pdf_icon.gif'/>
+				<u> PDF version</u>
+			</a>
+		</div>
+	</div>
+</br>
+</div>
+{% endblock %}

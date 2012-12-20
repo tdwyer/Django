@@ -1,0 +1,169 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<!-- ALL CONTENT ON OR IN THIS SITE IS LICENSED UNDER THE GNU General Public License v3 -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ThomasDwyer.info</title>
+<link rel="stylesheet" href="{{ STATIC_PREFIX }}style/reset.css" />
+<link rel="stylesheet" href="{{ STATIC_PREFIX }}style/text.css" />
+<link rel="stylesheet" href="{{ STATIC_PREFIX }}style/960_24_col.css" />
+</head>
+<!-- ALL CONTENT ON OR IN THIS SITE IS LICENSED UNDER THE GNU General Public License v3 -->
+
+
+<body>
+
+{% block header %}
+
+<div class='container_24' style='
+box-shadow: 0px 6px 6px #525049;
+margin-left: -5px;
+margin-right: -5px;
+border-bottom-left-radius: 1em;
+border-bottom-right-radius: 1em;
+margin-left: auto;
+margin-right: auto;
+'>
+<div class='container_24'>
+	<div class='grid_1' style='margin-left: 0px'>
+		<a href='/'><img src='{{ STATIC_PREFIX }}media/{{ headerimage.banner }}'/></a>
+	</div>
+
+	<div class='grid_1'>
+		<a href='http://www2.honolulu.hawaii.edu/'><img src='{{ STATIC_PREFIX }}media/image/logo.png/'/></a>
+	</div>
+
+	<div class='grid_16 push_6' align="right" style='font: 11px/2.0 sans; '>
+		{% for i in hcclinks %}
+			<a href='{{ i.url }}' target='_blank'><font color='#007c85'><b>     {{ i.name }}     </b></font></a><font color='#acdbf9'>.</font>
+		{% endfor %}
+	</div>
+
+	<div class='grid_6' style='margin-top: 20px;' align="right">
+		<form action="/search/hcc_search/"  accept-charset="UTF-8" method="post" id="search-block-form">
+		{% csrf_token %}
+			<input type="text" maxlength="128" name="q" id="edit-search-block-form-1" size="15" value="" title="Enter the terms you wish to search for." class="form-text" />
+			<input type="submit" name="op" id="edit-submit" value="Search"  class="form-submit" />
+			<input type="hidden" name="form_id" id="edit-search-block-form" value="q"  />
+		</form>
+
+	</div>
+
+
+</div>
+
+<div class='container_24' style='
+			margin-top: 0px;
+			margin-bottom: 0px;
+
+			background: #d5bc95; /* Old browsers */
+			background: -moz-linear-gradient(top,  #d5bc95 0%, #c7a876 47%, #b99453 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d5bc95), color-stop(47%,#c7a876), color-stop(100%,#b99453)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  #d5bc95 0%,#c7a876 47%,#b99453 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  #d5bc95 0%,#c7a876 47%,#b99453 100%); /* Opera 11.10+ */
+			background: linear-gradient(top,  #d5bc95 0%,#c7a876 47%,#b99453 100%); /* W3C */
+
+			'>
+
+
+	<div class='grid_24' style='margin-left: 15px;'>
+
+		{% for i in hccbrownbarlinks %}
+				<font color='#c7a876'></font><a href='{{ i.url }}' style='font: 21px/2 sans-serif' target='_blank'><font color='white'>{{ i.name }}</font></a><font color='#c7a876'> - - </font>
+		{% endfor %}
+
+		<font color='#c7a876'></font><a href='http://honolulu.hawaii.edu/coop/' style='font: 21px/2 sans-serif'><font color='#007c85'>Coop</font></a><font color='#c7a876'> - - </font>
+
+	</div>
+</div>
+<div class='container_24' style='
+			background: #eeeeee;
+			'>
+	<div class='grid_24' style=''>
+
+		{% for i in sitelinks %}
+
+				<font color='#eeeeee'> - - </font><a href='{{ i.url }}' style='color: #000000; font: 12px/2.9 sans-serif'><u>{{ i.name }}</u></a><font color='#eeeeee'> - - </font>
+		{% endfor %}
+
+	</div>
+</div>
+
+{% endblock %}
+
+<div class='container_24' style='
+		background-color:white;
+		border-bottom-left-radius: 1em;
+		border-bottom-right-radius: 1em;
+	'>
+	</br>
+	{% block body %}
+	bla bla bla</br>bla</br>bla
+	{% endblock %}
+
+	{% block sidebar %}
+	{% endblock %}
+</div>
+
+</div>
+<div class='container_24'>
+
+	{% block footer %}
+	</br>
+	<div class='grid_8'>
+
+		<p>
+			<div class='footer_header'>
+				<font color='black'><b>Honolulu Community College</b></br></font>
+			</div>
+			<div class='footer'>
+				<a href='http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=874+Dillingham+Blvd,+Honolulu,+HI+96817&sll=37.0625,-95.677068&sspn=51.841773,94.921875&ie=UTF8&hq=&hnear=874+Dillingham+Blvd,+Honolulu,+Hawaii+96817&ll=21.32137,-157.871797&spn=0.007516,0.015675&z=17' target='_blank'>
+					<font color='#006699'><u>874 Dillingham Blvd. Honolulu, HI 96817</u></font></br>
+				</a>
+
+				<font color='black'>808-845-9211</font></br>
+
+				</br>
+				Honolulu Community College is an Equal</br>Opportunity Employer
+				</br></br>
+				<a href='http://www2.honolulu.hawaii.edu/?q=node/109' target='_blank'>
+				<font color='#006699'><u>Web Feedback</u></font>
+				</a>
+			</div>
+		</p>
+	</div>
+	<div class='grid_8'>
+		<p>
+			<div class='footer_header'>
+				<font color='black'><b>Related Links</b></br></font>
+			</div>
+			<div class='footer'>
+					{% for i in link %}
+					<a href='{{ i.url }}' target='_blank'><font color='#006699'><u>{{i.name }}</u></font></a></br>
+					{% endfor %}
+				</font>
+			</div>
+		</p>
+	</div>
+	<div class='grid_8'>
+		<p>
+			<div class='footer_header'>
+				<font color='black'><b>Security</b></br></font>
+			</div>
+			<div class='footer'>
+					{% for i in phone_contact %}
+						{{ i }}{{ i.number }}</br>
+					{% endfor %}
+				</font>
+			</div>
+		</p>
+
+	</div>
+	{% endblock %}
+
+</div>
+
+</body>

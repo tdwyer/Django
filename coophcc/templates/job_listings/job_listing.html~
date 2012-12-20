@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block sidebar %}
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+	<h5>Degree Programs</h5>
+	{% for i in degreeprogram_objects %}
+	<a href='{{ i.get_absolute_url }}1/'><font color='blue'><u>{{ i }}</u></font></a>
+	{% endfor %}
+	</br>
+	</div>
+</div>
+</br>
+{% endblock %}
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+
+		<h1>Job Listings For {{ degree_program }}</h1>
+		<h3>{{ displayed_object }}<hr></h3>
+		<div class='help'>{{ displayed_object.created }}</div>
+		<p>{{ displayed_object.description|linebreaks }}</p>
+		<h6>Contact<hr></h6>
+		<p><b>Name -</b> {{ displayed_object.contact_name }}</p>
+		<p><b>Email -</b> {{ displayed_object.contact_email }}</p>
+		<p><b>Phone -</b> {{ displayed_object.contact_phone }}</p>
+
+
+		<form action="/jobs/contact_poster/{{ displayed_object.degree_program.id }}/{{ displayed_object.id }}/" method="post">{% csrf_token %}
+			{{ contact_form.non_field_errors }}
+			<div class="fieldWrapper">
+				<font color='red'>{{ contact_form.sender.errors }}</font>
+				<p>
+				{{ contact_form.sender }}
+				<label>Your E-mail</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				<font color='red'>{{ contact_form.subject.errors }}</font>
+				<p>
+				{{ contact_form.subject }}
+				<label>Subject</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				<font color='red'>{{ contact_form.message.errors }}</font>
+				<p>
+				{{ contact_form.message }}
+				</p>
+			</div>
+			<p><input type="submit" value="Send E-mail" /></p>
+		</form>
+
+		<p><hr>Last Edited - {{ displayed_object.lastedit }}</p>
+
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "info/info-sidebar.html" %}
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+
+		<h1>Coop. Program Information</h1>
+		<h3>{{ displayed_object.title }}</h3>
+		<p>{{ displayed_object.description|safe }}</p>
+		<p>Last Edited: {{ displayed_object.lastedit }}</p>
+
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block sidebar %}
+<div class='grid_5'>
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+	<h5>Additional Links</h5>
+	<a href='/accounts/logout/'><font color='blue'><u>LogOut</u></font></a></br>
+	<a href='/accounts/edit_profile'><u>Edit Profile</u></a></br>
+	<a href='/accounts/password_change/'><font color='blue'><u>Change Password</u></font></a></br>
+	<a href='/jobs/create_listing'><u>Create Job Listing</u></a></br>
+	<a href='/jobs/owners_job_listings/1/'><u>Manage Job Listing</u></a>
+	</div>
+</br>
+</div>
+</br>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class='grid_19'>
+	<div class='serch_link' style='margin: 5px;'>
+		<h1>Your Job Listings</h1>
+		<ol>
+		{% for i in job_listings %}
+		<li><a href='/jobs/edit_listing/{{ i.id }}/'><font color='green'><b>Edit</b></font></a>
+		|
+		<a href='/jobs/delete_job_listing/{{ i.id }}/'><font color='red'><b>Delete</b></font></a>
+
+		<a href='/jobs/view_owners_listing/{{ i.id }}/'><font color='blue'></font> - <b><font color='black'>{{ i }}</b></br>{{ i.description|truncatewords:30 }}</font> - <font color='#007c85'>{{ i.created }}</font></a></li>
+		</br>
+		{% endfor %}
+		</ol>
+
+		<p>Page:
+		{% for i in pages %}
+			<a href='/jobs/owners_job_listings/{{ i }}/'>{{ i }}</a> ,
+		{% endfor %}
+		</p>
+
+	</div>
+</div>
+{% endblock %}

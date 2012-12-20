@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<div class='grid_5'>
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+	<h5>Additional Links</h5>
+	<a href='/accounts/logout/' style='font: 12px/1.5 sans-serif;'><font color='blue'><u>LogOut</u></font></a></br>
+	<a href='/accounts/edit_profile' style='font: 12px/1.5 sans-serif;'><u>Edit Profile</u></a></br>
+	<a href='/accounts/password_change/' style='font: 12px/1.5 sans-serif;'><font color='blue'><u>Change Password</u></font></a></br>
+	<a href='/jobs/create_listing' style='font: 12px/1.5 sans-serif;'><u>Create Job Listing</u></a></br>
+	<a href='/jobs/owners_job_listings/1/' style='font: 12px/1.5 sans-serif;'><u>Manage Job Listing</u></a>
+	</div>
+</br>
+</div>
+</br>
+</div>
+{% endblock %}

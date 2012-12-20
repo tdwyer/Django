@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block sidebar %}
+<div class='grid_5'>
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+	<h5>Additional Links</h5>
+	<a href='/accounts/logout/'><font color='blue'><u>LogOut</u></font></a></br>
+	<a href='/accounts/edit_profile'><u>Edit Profile</u></a></br>
+	<a href='/accounts/password_change/'><font color='blue'><u>Change Password</u></font></a></br>
+	<a href='/jobs/create_listing'><u>Create Job Listing</u></a></br>
+	<a href='/jobs/owners_job_listings/1/'><u>Manage Job Listing</u></a>
+	</div>
+</br>
+</div>
+</br>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+
+		<h1>Job Listings For {{ degree_program }}</h1>
+		<form method="post" action="/jobs/delete_job_listing/{{ displayed_object.id }}/">
+		{% csrf_token %}
+		<h5>
+		<font color='red'>Permanently Delete This Listing?</font>
+		<input type="submit" value="Yes" />
+		<input type="hidden" name="next" value="Submit" />
+		</form>
+		</h5>
+		</br>
+		<h3>{{ displayed_object }}<hr></h3>
+		<div class='help'>{{ displayed_object.created }}</div>
+		<p>{{ displayed_object.description|linebreaks }}</p>
+		<h6>Contact<hr></h6>
+		<p><b>Name -</b> {{ displayed_object.contact_name }}</p>
+		<p><b>Email -</b> {{ displayed_object.contact_email }}</p>
+		<p><b>Phone -</b> {{ displayed_object.contact_phone }}</p>
+
+		<p><hr>Last Edited - {{ displayed_object.lastedit }}</p>
+
+	</div>
+</div>
+{% endblock %}

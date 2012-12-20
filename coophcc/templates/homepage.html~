@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+{% block sidebar %}
+{% endblock %}
+
+{% block body %}
+<div class='grid_24' style='
+
+	'>
+
+	<div style='margin: 5px'>
+		{% for i in homepage_text %}
+		<p><image src='/static/media/image/honolulu-half.jpg'/><h3>{{ i }}</h3>
+		{{ i.description|safe }}</p>
+		{% endfor %}
+	</div>
+</div>
+
+<div class='grid_8'>
+	<div style='margin: 15px;'>
+		<h3><image src='/static/media/image/homepage-icon.png'/> Recent News<hr style='border: 0 #b99453 solid; border-top-width: 2px;'></h3>
+		{% for i in news_objects%}
+			<a href='{{ i.get_absolute_url }}'><font color='black'>
+			<b>{{ i.title }}</b>
+			<p>{{ i.description|truncatewords:20 }}</p>
+			</font></a>
+		{% endfor %}
+	</div>
+</div>
+<div class='grid_8'>
+	<div style='margin: 15px;'>
+		<h3><image src='/static/media/image/homepage-icon.png'/> Info Links<hr style='border: 0 #b99453 solid; border-top-width: 2px;'></h3>
+		{% for i in info_objects%}
+			<a href='{{ i.get_absolute_url }}'><b>{{ i.title }}</b></font></a>
+		{% endfor %}
+	</div>
+</div>
+<div class='grid_8'>
+	<div style='margin: 15px;'>
+		<h3><image src='/static/media/image/homepage-icon.png'/> Looking For Work?<hr style='border: 0 #b99453 solid; border-top-width: 2px;'></h3>
+		{% for i in job_objects%}
+			<a href='{{ i.get_absolute_url }}'><font color='black'>
+			<b><font color='#007c85'>{{ i.degree_program }}</font> - {{ i.title }}</b>
+			<p>{{ i.description|truncatewords:20 }}</p>
+			</font></a>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

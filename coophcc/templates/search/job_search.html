@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class='grid_24'>
+	<div style='margin: 5px;'>
+		<form method="post" action="/jobs/search/">
+		{% csrf_token %}
+
+		<h1>Job Search</h1>
+		<p>
+			{% for i in homepage_text_object %}
+				{{ i }}
+			{% endfor %}
+		</p>
+		<input type="submit" value="Submit" />
+		<input type="hidden" name="next" value="Submit" />
+		{{ form.q }}
+		Degree Program:{{ form.program }}
+		</form>
+		<hr>
+	</div>
+</div>
+{% endblock %}

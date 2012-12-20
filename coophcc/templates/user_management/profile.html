@@ -1,0 +1,18 @@
+{% extends "user_management/admin-sidebar.html" %}
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+		<h1>{{ user|capfirst }}'s Profile</h1>
+		<p>
+		<b>Username</b> - {{ user.username }}</br>
+		<b>First Name</b> - {{ user.first_name }}</br>
+		<b>Last Name</b> - {{ user.last_name }}</br>
+		<b>E-mail</b> - {{ user.email }}</br>
+		<b>Total Listings</b> - {{ total_listings }}
+		</p>
+
+
+	</div>
+</div>
+{% endblock %}

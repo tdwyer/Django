@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block sidebar %}
+<div class='grid_5'>
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+		<h5>Related Pages</h5>
+		{% for i in info_objects %}
+		<a href='{{ i.get_absolute_url }}'><font color='blue'><u>{{ i }}</u></font></a>
+		{% endfor %}
+		</br>
+		</br>
+		<a href='/email_page/info/{{ displayed_object.id }}/' style='font: 12px/1.5 sans-serif;'>
+		<image src='/static/media/image/mail_icon.gif'/>
+		<u> Send to friend</u>
+		</a>
+		</br>
+		<a href='/info/{{ displayed_object.id }}/pdf/' style='font: 12px/1.5 sans-serif;'><image src='/static/media/image/pdf_icon.gif'/> <u>PDF version</u></a>
+	</div>
+</div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+
+		<h1>Coop. Program Information</h1>
+		<h3>{{ displayed_object.title }}</h3>
+		<p>{{ displayed_object.description|safe }}</p>
+		<p>Last Edited: {{ displayed_object.lastedit }}</p>
+
+	</div>
+</div>
+{% endblock %}

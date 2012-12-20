@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block body %}
+<div class='grid_10 push_7' style='margin-left: 20px'>
+
+	<h6>Login<hr></h6>
+
+	<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+	{% csrf_token %}
+
+	<div class="fieldWrapper">
+		<font color='red'>{{ form.username.errors }}</font>
+		<p>
+		{{ form.username }}
+		<label>Username</label>
+		</p>
+	</div>
+	<div class="fieldWrapper">
+		<font color='red'>{{ form.password.errors }}</font>
+		<p>
+		{{ form.password }}
+		<label>Password</label>
+		</p>
+	</div>
+
+	<input type="submit" value="login" />
+	<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+	</br>
+	<a href='/accounts/create_account/'>Create Account</font></a></br>
+	<a href='/accounts/password_reset/'>Lost Password?</a>
+	</br>
+</br>
+</div>
+{% endblock %}

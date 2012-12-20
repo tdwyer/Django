@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<div class='grid_5'>
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+	<h5>Additional Links</h5>
+	<a href='/accounts/logout/'><font color='blue'><u>LogOut</u></font></a></br>
+	<a href='/accounts/edit_profile'><u>Edit Profile</u></a></br>
+	<a href='/accounts/password_change/'><font color='blue'><u>Change Password</u></font></a></br>
+	<a href='/jobs/create_listing'><u>Create Job Listing</u></a></br>
+	<a href='/jobs/owners_job_listings/1/'><u>Manage Job Listing</u></a>
+	</div>
+</br>
+</div>
+</br>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+		<h1>Edit Job Listing<hr></h1>
+
+		<form method="post" action={{ action_url }}>
+		{% csrf_token %}
+
+		<div class="fieldWrapper">
+			<font color='red'>{{ form.degree_program.errors }}</font>
+			<p>
+			{{ form.degree_program }}
+			<label>Degree Program</label>
+			</p>
+		</div>
+		<div class="fieldWrapper">
+			<font color='red'>{{ form.contact_name.errors }}</font>
+			<p>
+			{{ form.contact_name }}
+			<label>Contact Name</label>
+			</p>
+		</div>
+		<div class="fieldWrapper">
+			<font color='red'>{{ form.contact_email.errors }}</font>
+			<p>
+			{{ form.contact_email }}
+			<label>Contact E-mail</label>
+			</p>
+		</div>
+		<div class="fieldWrapper">
+			<font color='red'>{{ form.contact_phone.errors }}</font>
+			<p>
+			{{ form.contact_phone }}
+			<label>Contact Phone</label>
+			</p>
+		</div>
+		</br>
+		<hr>
+		<div class="fieldWrapper">
+			<font color='red'>{{ form.title.errors }}</font>
+			<p>
+			<label>Title</label>
+			{{ form.title }}
+			</p>
+		</div>
+		<div class="fieldWrapper">
+			<font color='red'>{{ form.description.errors }}</font>
+			<p>
+			{{ form.description }}
+			</p>
+		</div>
+		<div class="fieldWrapper">
+			<font color='red'>{{ form.owner.errors }}</font>
+			<p>
+			{{ form.owner }}
+			</p>
+		</div>
+
+		<input type="submit" value="Submit" />
+		<input type="hidden" name="next" value="Submit" />
+		</form>
+
+	</div>
+</div>
+{% endblock %}

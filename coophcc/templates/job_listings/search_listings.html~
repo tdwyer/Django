@@ -1,0 +1,48 @@
+{% extends "job_listings/jobs-sidebar.html" %}
+
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+		<h2>Job Search</h2>
+
+		<form method="get" action=".">
+			<table>
+				<input type="submit" value="Search" size="100">
+				<input type="text" name="q" value="" id="id_q" size='80'/>
+				<input type="hidden" name="models" value="job_listings.joblisting" id="id_models_0" />
+			</table>
+
+			{% if query %}
+			<h3>Results</h3>
+
+			<ol>
+			{% for result in page.object_list %}
+
+					<li>
+						<a href="{{ result.object.get_absolute_url }}">
+						<b><font color='#007c85'>{{ result.object.degree_program }} : </font><font color='black'>{{ result.object.title }}</b></font>
+						</br>
+						<font color='black'>{{ result.object.description|truncatewords:30 }} - </font>
+						<font color='#007c85'>{{ result.object.created }}</font>
+						</a>
+					</li>
+			{% empty %}
+					<p>No results found.</p>
+			{% endfor %}
+			</ol>
+
+			{% if page.has_previous or page.has_next %}
+					<div>
+			{% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+				|
+			{% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+					</div>
+			{% endif %}
+			{% else %}
+					{# Show some example queries to run, maybe query syntax, something else? #}
+			{% endif %}
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "user_management/admin-sidebar.html" %}
+
+{% block body %}
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+
+		<h1>Job Listings For {{ degree_program }}</h1>
+		<form method="post" action="/jobs/delete_job_listing/{{ displayed_object.id }}/">
+		{% csrf_token %}
+		<h5>
+		<font color='red'>Permanently Delete This Listing?</font>
+		<input type="submit" value="Yes" />
+		<input type="hidden" name="next" value="Submit" />
+		</form>
+		</h5>
+		</br>
+		<h3>{{ displayed_object }}<hr></h3>
+		<div class='help'>{{ displayed_object.created }}</div>
+		<p>{{ displayed_object.description|linebreaks }}</p>
+		<h6>Contact<hr></h6>
+		<p><b>Name -</b> {{ displayed_object.contact_name }}</p>
+		<p><b>Email -</b> {{ displayed_object.contact_email }}</p>
+		<p><b>Phone -</b> {{ displayed_object.contact_phone }}</p>
+
+		<p><hr>Last Edited - {{ displayed_object.lastedit }}</p>
+
+	</div>
+</div>
+{% endblock %}

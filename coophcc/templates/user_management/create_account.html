@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class='grid_10 push_7' style='margin-left: 20px'>
+<h6>Create An Account
+{% if error %}
+	<font color='red'></br> - {{ error }} -</font>
+{% endif %}
+<hr></h6>
+
+<form action="/accounts/create_account/" method="post">{% csrf_token %}
+	{{ form.non_field_errors }}
+	<div class="fieldWrapper">
+		<font color='red'>{{ form.username.errors }}</font>
+		<p>
+		{{ form.username }}
+		<label>Username</label>
+		</p>
+	</div>
+	<div class="fieldWrapper">
+		<font color='red'>{{ form.password.errors }}</font>
+		<p>
+		{{ form.password }}
+		<label>Password</label>
+		</p>
+	</div>
+	<div class="fieldWrapper">
+		<font color='red'>{{ form.first_name.errors }}</font>
+		<p>
+		{{ form.first_name }}
+		<label>First Name</label>
+		</p>
+	</div>
+	<div class="fieldWrapper">
+		<font color='red'>{{ form.last_name.errors }}</font>
+		<p>
+		{{ form.last_name }}
+		<label>Last Name</label>
+		</p>
+	</div>
+	<div class="fieldWrapper">
+		<font color='red'>{{ form.email.errors }}</font>
+		<p>
+		{{ form.email }}
+		<label>E-mail</label>
+		</p>
+	</div>
+	<p><input type="submit" value="Create" /></p>
+</form>
+<a href='/accounts/login/'>Login</a>
+</br></br>
+</div>
+
+{% endblock %}

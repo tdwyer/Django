@@ -1,0 +1,22 @@
+{% extends "job_listings/jobs-sidebar.html" %}
+
+{% block body %}
+<div class='grid_19'>
+	<div class='serch_link' style='margin: 5px;'>
+		<h1>Job Listings For {{ degree_program }}</h1>
+		<ol>
+		{% for i in job_listings %}
+		<li><a href='/jobs/view_listing/{{ i.id }}'><b><font color='black'>{{ i }}</b></font></br><font color='black'>{{ i.description|truncatewords:30 }} - </font><font color='#007c85'>{{ i.created }}</font></a></li>
+		</br></br>
+		{% endfor %}
+		</ol>
+
+		<p>Page:
+		{% for i in pages %}
+			<a href='/jobs/{{ degree_program.id }}/{{ i }}/'>{{ i }}</a> ,
+		{% endfor %}
+		</p>
+
+	</div>
+</div>
+{% endblock %}

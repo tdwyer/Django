@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+	<h5>Additional Links</h5>
+	<a href='/accounts/logout/'><font color='blue'><u>LogOut</u></font></a></br>
+	<a href='/accounts/edit_account'><u>Edit Account</u></a></br>
+	<a href='/accounts/password_change/'><font color='blue'><u>Change Password</u></font></a></br>
+	<a href='/jobs/create_listing'><u>Create Job Listing</u></a>
+	</div>
+</br>
+</div>
+</br>
+{% endblock %}
+
+
+{% block body %}
+
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+		<h6>Edit Account
+		{% if error %}
+			<font color='red'></br> - {{ error }} -</font>
+		{% endif %}
+		<hr></h6>
+
+		<div class='help'>
+			<p>
+			Update any vaules and click Submit
+			</p>
+		</div>
+
+		<form action="/accounts/create_account/" method="post">{% csrf_token %}
+			{{ form.non_field_errors }}
+			<div class="fieldWrapper">
+				<font color='red'>{{ form.first_name.errors }}</font>
+				<p>
+				{{ form.first_name }}
+				<label>New First Name</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				<font color='red'>{{ form.last_name.errors }}</font>
+				<p>
+				{{ form.last_name }}
+				<label>New Last Name</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				<font color='red'>{{ form.email.errors }}</font>
+				<p>
+				{{ form.email }}
+				<label>New E-mail</label>
+				</p>
+			</div>
+			<p><input type="submit" value="Submit" /></p>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

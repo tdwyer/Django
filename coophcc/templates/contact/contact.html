@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block sidebar %}
+<div class='grid_5'>
+<div class='sidebar'>
+	<div style='margin: 5px;'>
+	<h5>Additional Links</h5>
+	<a href='/jobs/view_listing/{{ displayed_object.id }}/pdf/' style='font: 12px/1.5 sans-serif;'><image src='/static/media/image/pdf_icon.gif'/> <u>PDF version</u></a>
+	</div>
+</div>
+</div>
+{% endblock %}
+
+
+{% block body %}
+
+<div class='grid_19'>
+	<div style='margin: 5px;'>
+		<h1>{{ displayed_object.title }}</h1>
+		<p>{{ displayed_object.post|safe }}</p>
+		</br>
+		</br>
+
+		<h6>Contact<hr></h6>
+
+		<form action="/contact/" method="post">{% csrf_token %}
+			{{ form.non_field_errors }}
+			<div class="fieldWrapper">
+				{{ form.sender.errors }}
+				<p>
+				{{ form.sender }}
+				<label for="id_sender">Your Email</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				{{ form.subject.errors }}
+				<p>
+				{{ form.subject }}
+				<label for="id_subject">Subject</label>
+				</p>
+			</div>
+			<div class="fieldWrapper">
+				{{ form.message.errors }}
+				<p>
+				{{ form.message }}
+				<label for="id_message">Message</label>
+				</p>
+			</div>
+			<p><input type="submit" value="Send message" /></p>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
